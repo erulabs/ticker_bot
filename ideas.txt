@@ -1,0 +1,40 @@
+Ways of reporting
+  report if prompted
+  AND
+  report on a timer
+    report only if $ or % exceeded
+
+
+More specific reporting:
+
+  report the value of a coin at an exact timestamp (tick eth DDMMYY hh:mm:ss)
+
+  report top some number of coins(default 5) by metric(default mktvalue) (tick top)
+    can add metrics (usd, change/time, mktvalue, volume/time)
+
+  report a pre-assigned combo (i.e. tick krs reports: ETH, XRP, BTC, LTC, etc)
+    tick trend (some sort of market analytic value)
+
+  check for 3rd index list to print a specific exchange (tick eth gdax)
+
+  tick ratio coin:coin (i.e. tick ratio eth:xrp prints coin1/coin2)
+
+  report the coin with the largest % change in the last 4 hours (tick swing)
+Additional features:
+
+tick !help
+  list of commands with arguments
+
+Set alerts at certain dollar values based on analytics for forecast, round numbers or psychological barriers
+
+phone app + widget
+
+have tickerbot keep a list of participants i.e. "ticker +self or ticker -self"
+    anyone on this list is subscribed to tickerbot @tags
+
+record the last seen price for any given ticker and then put an up or down arrow
+    :arrow_up:  :arrow_down:
+
+make ticker bot delete after X seconds
+OR
+make ticker bot delete the previous report of the same coin

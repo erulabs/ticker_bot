@@ -11,14 +11,15 @@ client.on('message', message => {
   if (message.content.indexOf('tick') === 0) {
     request( 'https://api.coinmarketcap.com/v1/ticker/', function(error, response, body){
       let coinmarketcapdata = JSON.parse(body)
+
       let marketdata = coinmarketcapdata.find(function(item){
-        let term = message.content.split(' ')[1]
+        let term = message.content.split(' ')[1] //need to change this probably
         if (term){
           return(item.symbol.toLowerCase() == term.toLowerCase())
         }
       })
       if (marketdata){
-        message.reply(marketdata.price_usd)
+        message.reply('$' + marketdata.price_usd)
       } else {
         message.reply('No such coin')
       }
