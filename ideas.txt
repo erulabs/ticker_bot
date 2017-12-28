@@ -1,4 +1,4 @@
-make Tick non case sensitive
+~~make Tick non case sensitive~~
 
 Ways of reporting
   report if prompted
@@ -16,7 +16,7 @@ More specific reporting:
 
   report a pre-assigned combo (i.e. tick krs reports: ETH, XRP, BTC, LTC, etc)
     tick trend (some sort of market analytic value) OR tick me brings up preferred
-    vis subscriber function 
+    vis subscriber function
 
   check for 3rd index list to print a specific exchange (tick eth gdax)
 

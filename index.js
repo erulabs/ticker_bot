@@ -2,7 +2,11 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help']
+const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man=']
+
+function subscribe() {
+  message.reply('is now subscribed to tickerbot!')
+}
 
 
 client.on('ready', () => {
