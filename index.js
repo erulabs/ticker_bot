@@ -8,10 +8,11 @@ const client = new Discord.Client();
 const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man', 'tick']
 const modules = {}
 let secrets = {}
+const prices = {}
 
 const initialize = function () {
 
-  secrets = JSON.parse(fs.readFileSync('.secret.js', 'utf8'))
+  secrets = JSON.parse(fs.readFileSync('.secret.json', 'utf8'))
 
   glob('modules/*.js', function (err, files) {
     for (let i = 0; i < files.length; i++) {
