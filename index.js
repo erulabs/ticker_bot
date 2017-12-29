@@ -7,6 +7,7 @@ const client = new Discord.Client();
 const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man=', 'tick']
 const modules = {}
 let secrets = {}
+let prices = {}
 
 const initialize = function () {
   secrets = JSON.parse(fs.readFileSync('.secret.js', 'utf8'))
@@ -38,7 +39,7 @@ client.on('message', message => {
       module.run(message)
     } else {
       module = modules['tick']
-      module.run(message, term)
+      module.run(message, term, prices)
     }
   }
 });
