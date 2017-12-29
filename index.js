@@ -1,12 +1,15 @@
 //Ticker bots
 
 const glob = require('glob')
+const fs = require('fs')
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man=']
 const modules = {}
+let secrets = {}
 
 const initialize = function () {
+  secrets = JSON.parse(fs.readFileSync('.secret.js', 'utf8'))
   glob('modules/*.js', function (err, files) {
     for (let i = 0; i < files.length; i++) {
       const module = require('./' + files[i])
@@ -53,7 +56,7 @@ client.on('message', message => {
   }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(secrets['DISCORD_TOKEN']);
 //console.log(process.env.DISCORD_TOKEN);
 
 const request = require('request');
