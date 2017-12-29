@@ -1,0 +1,3 @@
+# Tickerbot
+
+Make da money
