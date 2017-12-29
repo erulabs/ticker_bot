@@ -3,14 +3,16 @@
 const glob = require('glob')
 const fs = require('fs')
 const Discord = require('discord.js');
+const request = require('request');
 const client = new Discord.Client();
-const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man=', 'tick']
+const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man', 'tick']
 const modules = {}
 let secrets = {}
-let prices = {}
 
 const initialize = function () {
+
   secrets = JSON.parse(fs.readFileSync('.secret.js', 'utf8'))
+
   glob('modules/*.js', function (err, files) {
     for (let i = 0; i < files.length; i++) {
       const module = require('./' + files[i])
@@ -33,7 +35,9 @@ client.on('ready', () => {
 
 client.on('message', message => {
   if (message.content.indexOf('tick') === 0) {
+
     let term = message.content.split(' ')[1]
+
     if ( commands.indexOf(term) > -1 ){
       const module = modules[term]
       module.run(message)
@@ -47,4 +51,4 @@ client.on('message', message => {
 client.login(secrets['DISCORD_TOKEN']);
 //console.log(process.env.DISCORD_TOKEN);
 
-const request = require('request');
+
