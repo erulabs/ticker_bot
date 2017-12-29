@@ -4,7 +4,7 @@ const glob = require('glob')
 const fs = require('fs')
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man=']
+const commands = ['subscribe', 'unsubscribe', 'mylist', 'top', 'help', 'quickmafs', 'man=', 'tick']
 const modules = {}
 let secrets = {}
 
@@ -34,24 +34,11 @@ client.on('message', message => {
   if (message.content.indexOf('tick') === 0) {
     let term = message.content.split(' ')[1]
     if ( commands.indexOf(term) > -1 ){
-      console.log(modules)
       const module = modules[term]
       module.run(message)
     } else {
-      request( 'https://api.coinmarketcap.com/v1/ticker/', function(error, response, body){
-        let coinmarketcapdata = JSON.parse(body)
-
-        let marketdata = coinmarketcapdata.find(function(item){
-          if (term){
-            return(item.symbol.toLowerCase() == term.toLowerCase())
-          }
-        })
-        if (marketdata){
-          message.reply('$' + marketdata.price_usd)
-        } else {
-          message.reply('No such coin')
-        }
-      })
+      module = modules['tick']
+      module.run(message, term)
     }
   }
 });
